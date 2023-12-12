@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Header from "../component/Header";
 
 const CategoriesPage = () => {
   const [categories, setCategories] = useState(null);
@@ -13,21 +14,24 @@ const CategoriesPage = () => {
   }, []);
 
   return (
-    <section>
-      {categories ? (
-        <div>
-          {categories.map((category) => {
-            return (
-              <article>
-                <h2>{category.strCategory}</h2>
-              </article>
-            );
-          })}
-        </div>
-      ) : (
-        <p>En cours de chargement</p>
-      )}
-    </section>
+    <>
+      <Header />
+      <section>
+        {categories ? (
+          <div>
+            {categories.map((category) => {
+              return (
+                <article>
+                  <h2>{category.strCategory}</h2>
+                </article>
+              );
+            })}
+          </div>
+        ) : (
+          <p>En cours de chargement</p>
+        )}
+      </section>
+    </>
   );
 };
 

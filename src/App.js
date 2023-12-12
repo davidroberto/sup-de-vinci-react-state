@@ -16,6 +16,7 @@ function App() {
         <Route path="/areas" element={<AreasPage />} />
         <Route path="/ingredients" element={<IngredientsPage />} />
         <Route path="/meal/details/:id" element={<MealDetails />} />
+        /meal/details/52977
       </Routes>
     </BrowserRouter>
   );

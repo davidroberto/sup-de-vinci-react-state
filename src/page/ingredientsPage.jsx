@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Header from "../component/Header";
 
 const IngredientsPage = () => {
   const [ingredients, setIngredients] = useState(null);
@@ -13,21 +14,24 @@ const IngredientsPage = () => {
   }, []);
 
   return (
-    <section>
-      {ingredients ? (
-        <div>
-          {ingredients.map((ingredient) => {
-            return (
-              <article>
-                <h2>{ingredient.strIngredient}</h2>
-              </article>
-            );
-          })}
-        </div>
-      ) : (
-        <p>En cours de chargement</p>
-      )}
-    </section>
+    <>
+      <Header />
+      <section>
+        {ingredients ? (
+          <div>
+            {ingredients.map((ingredient) => {
+              return (
+                <article>
+                  <h2>{ingredient.strIngredient}</h2>
+                </article>
+              );
+            })}
+          </div>
+        ) : (
+          <p>En cours de chargement</p>
+        )}
+      </section>
+    </>
   );
 };
 

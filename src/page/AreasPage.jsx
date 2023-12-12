@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Header from "../component/Header";
 
 const AreasPage = () => {
   const [areas, setAreas] = useState(null);
@@ -13,21 +14,25 @@ const AreasPage = () => {
   }, []);
 
   return (
-    <section>
-      {areas ? (
-        <div>
-          {areas.map((area) => {
-            return (
-              <article>
-                <h2>{area.strArea}</h2>
-              </article>
-            );
-          })}
-        </div>
-      ) : (
-        <p>En cours de chargement</p>
-      )}
-    </section>
+    <>
+      <Header />
+
+      <section>
+        {areas ? (
+          <div>
+            {areas.map((area) => {
+              return (
+                <article>
+                  <h2>{area.strArea}</h2>
+                </article>
+              );
+            })}
+          </div>
+        ) : (
+          <p>En cours de chargement</p>
+        )}
+      </section>
+    </>
   );
 };
 
