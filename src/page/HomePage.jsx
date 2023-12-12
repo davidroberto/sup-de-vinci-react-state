@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../component/Header";
 import LastThreeMeals from "../component/LastThreeMeals";
 import RandomMeal from "../component/RandomMeal";
+import { MealsContext } from "../context/MealsContext";
 
 const HomePage = () => {
   const [meals, setMeals] = useState(null);
@@ -20,10 +21,10 @@ const HomePage = () => {
       <Header />
 
       {meals ? (
-        <>
-          <LastThreeMeals meals={meals} />
-          <RandomMeal meals={meals} />
-        </>
+        <MealsContext.Provider value={meals}>
+          <LastThreeMeals />
+          <RandomMeal />
+        </MealsContext.Provider>
       ) : (
         <p>En cours de chargement</p>
       )}

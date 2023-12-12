@@ -1,4 +1,9 @@
-const LastThreeMeals = ({ meals }) => {
+import { useContext } from "react";
+import { MealsContext } from "../context/MealsContext";
+
+const LastThreeMeals = () => {
+  const meals = useContext(MealsContext);
+
   const lastThreeMeals = meals.slice(-3);
 
   return (
