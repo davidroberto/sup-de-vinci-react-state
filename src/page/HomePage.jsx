@@ -1,10 +1,32 @@
+import { useEffect, useState } from "react";
 import Header from "../component/Header";
+import LastThreeMeals from "../component/LastThreeMeals";
+import RandomMeal from "../component/RandomMeal";
 
 const HomePage = () => {
+  const [meals, setMeals] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const mealsResponse = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=");
+      const mealsResponseData = await mealsResponse.json();
+
+      setMeals(mealsResponseData.meals);
+    })();
+  }, []);
+
   return (
     <>
       <Header />
-      <div>Home</div>
+
+      {meals ? (
+        <>
+          <LastThreeMeals meals={meals} />
+          <RandomMeal meals={meals} />
+        </>
+      ) : (
+        <p>En cours de chargement</p>
+      )}
     </>
   );
 };
